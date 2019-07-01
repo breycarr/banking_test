@@ -1,4 +1,4 @@
-# Bank Tech Test
+# Bank Tech Test [![Build Status](https://travis-ci.org/breycarr/banking_test.svg?branch=master)](https://travis-ci.org/breycarr/banking_test) [![Maintainability](https://api.codeclimate.com/v1/badges/0fcb4911c3149834fef9/maintainability)](https://codeclimate.com/github/breycarr/banking_test/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/0fcb4911c3149834fef9/test_coverage)](https://codeclimate.com/github/breycarr/banking_test/test_coverage)
 > A basic account management IRB app
 
 This is an IRB based account class, designed to allow a single user to deposit and withdraw money from their account and view a formatted statement.

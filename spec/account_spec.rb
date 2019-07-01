@@ -10,12 +10,17 @@ describe Account do
   end
 
   describe '#deposit' do
-    it "accepts an integer and increase the shown balance by that amount" do
+    it "accepts a nunber and increase the balance by that amount" do
       expect{ subject.deposit(1) }.to change{ subject.show_balance }.by(1)
     end
-    it "should throw an error if the input is not an integer" do
+    it "should throw an error if the input is not a number" do
       expect{ subject.deposit('one') }.to raise_error('input must be a number')
     end
   end
 
+  describe '#withdraw' do
+    it "accepts a number and decreases the balance by that amount" do
+      expect{ subject.withdraw(1) }.to change{ subject.show_balance }.by(-1) 
+    end
+  end
 end

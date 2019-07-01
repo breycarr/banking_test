@@ -44,6 +44,9 @@ As a customer
 So I can use my money
 I need to be able to withdraw money and my balance should decrease by that amount
 ```
+Object | Message
+-|-
+Account | Withdraw
 ```
 As a customer
 So I can keep track of when I make deposits and withdrawals

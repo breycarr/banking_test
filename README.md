@@ -49,11 +49,14 @@ Object | Message
 Account | Withdraw
 ```
 As a customer
-So I can keep track of when I make deposits and withdrawals
-I would like all my transactions to have a date connected to them
-```
-```
-As a customer
 So I can see all my account activity
 I would like to be able to print a bank statement
+```
+Object | Message
+-|-
+Account | statement
+```
+As a customer
+So I can keep track of when I make deposits and withdrawals
+I would like all my transactions to have a date connected to them
 ```

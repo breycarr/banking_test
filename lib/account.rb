@@ -7,10 +7,6 @@ class Account
     @balance = opening_balance
   end
 
-  def show_balance
-    @balance
-  end
-
   def deposit(amount)
     raise 'input must be a number' unless valid_number?(amount)
     @balance += amount

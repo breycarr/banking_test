@@ -12,11 +12,18 @@ class Account
   end
 
   def deposit(amount)
-    raise 'input must be a number' if !amount.is_a?(Numeric)
+    raise 'input must be a number' unless valid_number?(amount)
     @balance += amount
   end
 
   def withdraw(amount)
+    raise 'input must be a number' unless valid_number?(amount)
     @balance -= amount
+  end
+
+private
+
+  def valid_number?(amount)
+     amount.is_a?(Numeric)
   end
 end

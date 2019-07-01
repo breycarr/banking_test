@@ -20,7 +20,10 @@ describe Account do
 
   describe '#withdraw' do
     it "accepts a number and decreases the balance by that amount" do
-      expect{ subject.withdraw(1) }.to change{ subject.show_balance }.by(-1) 
+      expect{ subject.withdraw(1) }.to change{ subject.show_balance }.by(-1)
+    end
+    it "should throw an error if the input is not a number" do
+      expect{ subject.withdraw('one') }.to raise_error('input must be a number')
     end
   end
 end

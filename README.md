@@ -34,17 +34,15 @@ Account | balance
 ```
 As a customer
 So I can save money with the bank
-I need to be able to deposit money
+I need to be able to deposit money and my balance should increase by that amount
 ```
-```
-As a customer
-So my account is up to date
-When I deposit money, my balance should increase by that amount
-```
+Object | Message
+-|-
+Account | Deposit
 ```
 As a customer
 So I can use my money
-I need to be able to withdraw money
+I need to be able to withdraw money and my balance should decrease by that amount
 ```
 ```
 As a customer

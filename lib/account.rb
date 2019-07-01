@@ -12,6 +12,7 @@ class Account
   end
 
   def deposit(amount)
+    raise 'input must be a number' if !amount.is_a?(Numeric)
     @balance += amount
   end
 end

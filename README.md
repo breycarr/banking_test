@@ -1,62 +1,78 @@
-## Specification
+# Bank Tech Test
+> A basic account management IRB app
 
-### Requirements
+This is an IRB based account class, designed to allow a single user to deposit and withdraw money from their account and view a formatted statement.
 
-* You should be able to interact with your code via a REPL like IRB or the JavaScript console.  (You don't need to implement a command line interface that takes input from STDIN.)
-* Deposits, withdrawal.
-* Account statement (date, amount, balance) printing.
-* Data can be kept in memory (it doesn't need to be stored to a database or anything).
+The project specifications and the user stories that were generated from them can be found on this project's [wiki](https://github.com/breycarr/banking_test/wiki)
 
-### Acceptance criteria
+## Installation
 
-**Given** a client makes a deposit of 1000 on 10-01-2012  
-**And** a deposit of 2000 on 13-01-2012  
-**And** a withdrawal of 500 on 14-01-2012  
-**When** she prints her bank statement  
-**Then** she would see
-
+Clone this repository
 ```
+$ git clone git@github.com:breycarr/banking_test.git
+```
+Then run bundle to get the appropriate gems and ruby version
+```
+$ bundle install
+```
+Navigate to the root folder for the respository, and open the accounts in iRB
+```
+$ irb -r ./lib/account.rb
+```
+
+## Usage examples
+### Creating an account
+The user can then initiate their account by creating a new variable
+```
+> account_name = Account.new
+```
+`account_name` can be any name (eg. `my_account`, `account_1`)
+All accounts are initiated with a balance of 0 and 0 transactions.
+
+The balance can be shown with the balance method
+```
+> account_name.balance
+=> 0
+```
+### Deposits and Withdrawls
+New funds can be added with the deposit method. The method requires 1 argument, with an additional optional argument for the date.
+```
+> subject.deposit(1000, "10/01/2012")
+ => [["10/01/2012", 1000, nil, 1000]]
+ ```
+ If a date is not specified, the current date will be used
+ ```
+ > subject.deposit(2000)
+ => [["01/07/2019", 2000, nil, 2000]]
+ ```
+
+ Funds can be withdrawn with the withdraw method, which used the arguments described for deposit above
+```
+> subject.withdraw(500, "14/01/2012")
+=> [["14/01/2012", nil, 500, -500]]
+```
+### Statements
+A formatted statement of all deposits and withdrawals can be seen using the statement method.
+```
+> subject.deposit(1000, "10/01/2012")
+> subject.deposit(2000, "13/01/2012")
+> subject.withdraw(500, "14/01/2012")
+> subject.statement
+=> "date || credit || debit || balance\n14/01/2012 ||  || 500 || 2500\n13/01/2012 || 2000 ||  || 3000\n10/01/2012 || 1000 ||  || 1000\n"
+```
+
+To show the formatted text, use the puts method ahead of calling the statement method
+```
+> puts subject.statement
 date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
-```
+14/01/2012 ||  || 500 || 2500
+13/01/2012 || 2000 ||  || 3000
+10/01/2012 || 1000 ||  || 1000
+ => nil
+ ```
+### Development, Testing and Code Quality
+This is a passing build. All unit tests for this class can be found in the spec file.
+The tests have 100% coverage, as tested by SimpleCov.
+Tests can be run, and coverage is shown by calling `rspec` in the terminal.
 
-### User Stories
-```
-As a customer
-So I know how much money I have
-I would like to see my balance
-```
-Object | Message
--|-
-Account | balance
-```
-As a customer
-So I can save money with the bank
-I need to be able to deposit money and my balance should increase by that amount
-```
-Object | Message
--|-
-Account | Deposit
-```
-As a customer
-So I can use my money
-I need to be able to withdraw money and my balance should decrease by that amount
-```
-Object | Message
--|-
-Account | Withdraw
-```
-As a customer
-So I can see all my account activity
-I would like to be able to print a bank statement
-```
-Object | Message
--|-
-Account | statement
-```
-As a customer
-So I can keep track of when I make deposits and withdrawals
-I would like all my transactions to have a date connected to them
-```
+The code quality was confirmed to match the Ruby style guide by the Scaffolint extension for RuboCop. This can be shown by calling `rubocop` in the terminal.

@@ -1,5 +1,3 @@
-require 'date'
-
 class Account
   STARTING_BALANCE = 0
 
@@ -10,14 +8,14 @@ class Account
     @transactions = []
   end
 
-  def deposit(amount, date =  Date.today)
+  def deposit(amount, date = Time.now.strftime("%d/%m/%Y"))
     raise 'input must be a number' unless valid_number?(amount)
 
     @balance += amount
     @transactions.push([date, amount, nil, @balance])
   end
 
-  def withdraw(amount, date = Date.today)
+  def withdraw(amount, date = Time.now.strftime("%d/%m/%Y"))
     raise 'input must be a number' unless valid_number?(amount)
 
     @balance -= amount
@@ -25,8 +23,7 @@ class Account
   end
 
   def statement
-    "date || credit || debit || balance
-    #{statement_format}"
+    "date || credit || debit || balance\n#{statement_format}"
   end
 
 private
@@ -37,7 +34,9 @@ private
 
   def statement_format
     statements = []
-    @transactions.each { |item| statements.push("#{item[0]} || #{item[1]} || #{item[2]} || #{item[3]}\n") }
+    @transactions.reverse.each {
+      |item| statements.push("#{item[0]} || #{item[1]} || #{item[2]} || #{item[3]}\n")
+    }
     statements.join
   end
 end

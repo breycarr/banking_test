@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "2.6.0"
+ruby "2.5.3"
 
 gem "rubocop", '~> 0.72.0', require: false
 gem 'simplecov', require: false, group: :test

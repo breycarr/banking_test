@@ -33,16 +33,16 @@ describe Account do
     end
     it "prints out a deposit in column 2" do
       subject.deposit(1)
-      expect(subject.statement).to include("|| 1 ||  || 1")
+      expect(subject.statement).to include("|| 1.00 ||  || 1.00")
     end
     it 'prints out a withdrawl in column 3' do
       subject.deposit(10)
       subject.withdraw(1)
-      expect(subject.statement).to include("||  || 1 || 9")
+      expect(subject.statement).to include("||  || 1.00 || 9.00")
     end
     it "includes the date" do
       subject.deposit(1000, "10/01/2012")
-      expect(subject.statement).to include("10/01/2012 || 1000 ||  || 1000")
+      expect(subject.statement).to include("10/01/2012 || 1000.00 ||  || 1000.00")
     end
   end
 end

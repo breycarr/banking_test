@@ -23,7 +23,7 @@ class Account
   end
 
   def statement
-    "date || credit || debit || balance\n#{statement_format}"
+    "date || credit || debit || balance\n#{format_transactions}"
   end
 
 private
@@ -32,11 +32,18 @@ private
     amount.is_a?(Numeric)
   end
 
-  def statement_format
+  def format_transactions
     statements = []
     @transactions.reverse.each {
-      |item| statements.push("#{item[0]} || #{item[1]} || #{item[2]} || #{item[3]}\n")
+      |item| statements.push(
+        "#{item[0]} || #{add_pence(item[1])} || #{add_pence(item[2])} || #{add_pence(item[3])}\n"
+      )
     }
     statements.join
   end
+
+  def add_pence(item)
+    valid_number?(item) ? "#{item}.00" : nil
+  end
+
 end
